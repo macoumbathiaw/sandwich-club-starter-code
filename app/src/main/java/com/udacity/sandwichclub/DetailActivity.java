@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -15,12 +16,23 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    //Declaring the Views values
+    private TextView alsoKnownAsTv, placeOfOriginTv, descriptionTv, ingredientsTv;
+    private ImageView sandwichPitcureIv;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ImageView ingredientsIv = findViewById(R.id.image_iv);
+        //Find the Views
+        sandwichPitcureIv = findViewById(R.id.image_iv);
+        alsoKnownAsTv = findViewById(R.id.also_known_tv);
+        placeOfOriginTv = findViewById(R.id.origin_tv);
+        descriptionTv = findViewById(R.id.description_tv);
+        ingredientsTv = findViewById(R.id.ingredients_tv);
+
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -42,13 +54,13 @@ public class DetailActivity extends AppCompatActivity {
             closeOnError();
             return;
         }
+        setTitle(sandwich.getMainName());
 
-        populateUI();
         Picasso.with(this)
                 .load(sandwich.getImage())
-                .into(ingredientsIv);
+                .into(sandwichPitcureIv);
 
-        setTitle(sandwich.getMainName());
+        populateUI(sandwich);
     }
 
     private void closeOnError() {
@@ -56,7 +68,10 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
+    private void populateUI(Sandwich sandwich) {
+
+        String AlsoKnown, OriginOfSandwich, DescriptionOfSandwich, IngredientsOfSandwich;
+        
 
     }
 }
