@@ -71,7 +71,7 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
 
         String AlsoKnown, OriginOfSandwich, DescriptionOfSandwich, IngredientsOfSandwich;
-        
+
 
     }
 }
